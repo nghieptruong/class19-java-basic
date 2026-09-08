@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class ExLoop {
@@ -18,13 +19,36 @@ public class ExLoop {
                 Try again ! System random number: 1
 
             Gợi ý: dùng vòng lặp để lặp lại khi người dùng đoán sai --> lặp đến khi người dùng đoán đúng
+            - Kiem tra nhap sai (co nem exception): ung dung try...catch...
+            - Su dung mang 2 chieu: luu hang dau tien: la tat ca so random boi he thong
+                                        hang thu 2: la tat ca so ban doan
+            - In ra ket qua: Ket qua game:
+                  System:  2 | 4 | 6
+                    User:  3 | 1 | 6
+
          */
 
         //Ham nhap tu ban phim
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your number: ");
-        int input = sc.nextInt();
-        System.out.println(input);
+
+        boolean isContinue = false;
+        do {
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Enter your number [1 - 10]: ");
+            int input = sc.nextInt();
+
+            Random random = new Random();
+            int systemRandom = random.nextInt(1, 11);
+
+            if(input == systemRandom) {
+                System.out.println("You win !");
+                isContinue = false;
+            } else {
+                System.out.println("Try again ! System random number: " + systemRandom);
+                isContinue = true;
+            }
+        } while(isContinue);
+
+
 
     }
 }
