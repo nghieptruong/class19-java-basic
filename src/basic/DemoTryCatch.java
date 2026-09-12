@@ -1,3 +1,5 @@
+package basic;
+
 public class DemoTryCatch {
     public static void main(String[] args) {
         try {

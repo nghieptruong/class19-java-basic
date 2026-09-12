@@ -1,3 +1,5 @@
+package basic;
+
 public class DemoArray {
     public static void main(String[] args) {
         //khai bao 1 mang so nguyen

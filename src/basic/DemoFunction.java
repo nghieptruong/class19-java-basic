@@ -1,3 +1,5 @@
+package basic;
+
 public class DemoFunction {
     public static void main(String[] args) {
         String result = runBrowser("chrome");

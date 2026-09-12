@@ -1,3 +1,5 @@
+package basic;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -31,24 +33,48 @@ public class ExLoop {
         //Ham nhap tu ban phim
 
         boolean isContinue = false;
+        int[][] storedResult = new int[2][100];
+        int count = 0;
         do {
             Scanner sc = new Scanner(System.in);
-            System.out.println("Enter your number [1 - 10]: ");
-            int input = sc.nextInt();
+            int input = 0;
+            try {
+                System.out.println("Enter your number [1 - 10]: ");
+                String inputString = sc.nextLine(); // nhap chuoi
+                input = Integer.parseInt(inputString); // chuyen doi chuoi sang so
+                Random random = new Random();
+                int systemRandom = random.nextInt(1, 11);
+                storedResult[0][count] = systemRandom;
+                storedResult[1][count] = input;
+                count++;
 
-            Random random = new Random();
-            int systemRandom = random.nextInt(1, 11);
-
-            if(input == systemRandom) {
-                System.out.println("You win !");
-                isContinue = false;
-            } else {
-                System.out.println("Try again ! System random number: " + systemRandom);
+                if(input == systemRandom) {
+                    System.out.println("You win !");
+                    isContinue = false;
+                } else {
+                    System.out.println("Try again ! System random number: " + systemRandom);
+                    isContinue = true;
+                }
+            } catch (Exception e) {
+                //Lap lai
+                System.out.println("Invalid input. Please retry !");
                 isContinue = true;
             }
         } while(isContinue);
 
+        System.out.println("We recorded your effort: ");
+        for (int i = 0; i < storedResult.length; i++) {
+            if(i == 0) {
+                System.out.println("System records: ");
+            } else {
+                System.out.println("User records: ");
+            }
 
+            for (int j = 0; j < count; j++) {
+                System.out.print(storedResult[i][j] + " | ");
+            }
+            System.out.println();
+        }
 
     }
 }
